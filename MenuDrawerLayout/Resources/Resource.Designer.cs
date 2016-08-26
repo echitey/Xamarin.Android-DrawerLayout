@@ -1918,8 +1918,14 @@ namespace MenuDrawerLayout
 			// aapt resource value: 0x7f050015
 			public const int ApplicationName = 2131034133;
 			
+			// aapt resource value: 0x7f050017
+			public const int Closed = 2131034135;
+			
 			// aapt resource value: 0x7f050014
 			public const int Hello = 2131034132;
+			
+			// aapt resource value: 0x7f050016
+			public const int Open = 2131034134;
 			
 			// aapt resource value: 0x7f050000
 			public const int abc_action_bar_home_description = 2131034112;
