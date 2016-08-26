@@ -41,6 +41,22 @@ namespace MenuDrawerLayout
             SupportActionBar.SetHomeButtonEnabled(true);
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
             mDrawerToggle.SyncState();
+
+            if(bundle != null)
+            {
+                if(bundle.GetString("DrawerState") == "Open")
+                {
+                    SupportActionBar.SetTitle(Resource.String.Open);
+                }
+                else
+                {
+                    SupportActionBar.SetTitle(Resource.String.Closed);
+                }
+
+            }else
+            {
+                SupportActionBar.SetTitle(Resource.String.Closed);
+            }
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)
@@ -51,6 +67,25 @@ namespace MenuDrawerLayout
                 return true;
             }
             return base.OnOptionsItemSelected(item);
+        }
+
+        protected override void OnSaveInstanceState(Bundle outState)
+        {
+            if (mDrawerLayout.IsDrawerOpen((int)GravityFlags.Left))
+            {
+                outState.PutString("DrawerState", "Open");
+            }else
+            {
+                outState.PutString("DraweState", "Closed");
+            }
+
+            base.OnSaveInstanceState(outState);
+        }
+
+        protected override void OnPostCreate(Bundle savedInstanceState)
+        {
+            base.OnPostCreate(savedInstanceState);
+            mDrawerToggle.SyncState();
         }
     }
 }
